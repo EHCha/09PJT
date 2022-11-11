@@ -23,6 +23,9 @@ export default {
       },
       imgSrc(){
         return this.$store.getters.movieSrc
+      },
+      imgSrc(){
+        return `https://image.tmdb.org/t/p/original${imgSrc}`
       }
     },
     beforeMount() {
