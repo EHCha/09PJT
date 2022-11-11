@@ -1,32 +1,32 @@
 <template>
   <div>
     <span 
-      @click="updateTodoStatus" 
-      :class="{ 'is-completed': todo.isCompleted }"
-    >{{ todo.title }}</span>
-    <button @click="deleteTodo">Delete</button>
+      @click="updateMovieStatus" 
+      :class="{ 'is-completed': movie.isCompleted }"
+    >{{ movie.title }}</span>
+    <button @click="deleteMovie">Delete</button>
   </div>
 </template>
 
 <script>
 export default {
     name:'WatchListItem',
-    computed:{
-        todos(){
-            return this.$store.state.todos
-        }
-    },
     props:{
-        todo:Object
+        movie:Object
     },
     methods: {
-    deleteTodo () {
-      this.$store.dispatch('deleteTodo', this.todo)
-    },
-}   
+        deleteMovie () {
+        this.$store.dispatch('deleteMovie', this.movie)
+        },
+        updateMovieStatus(){
+            this.$store.dispatch('updateMovieStatus', this.movie)
+        },
+    }   
 }
 </script>
 
 <style>
-
+    .is-completed {
+    text-decoration: line-through;
+    }
 </style>

@@ -10,11 +10,8 @@ export default new Vuex.Store({
   state: {
     MovieJsonData: null,
     randomMovie: null,
-    todos:[
-      {
-        title:'title1',
-        
-      }
+    movies:[
+
     ],
   },
   getters: {
@@ -23,7 +20,7 @@ export default new Vuex.Store({
     },
     getRandomMovieData(state) {
       return state.randomMovie
-    }
+    },
   },
   mutations: {
     GET_MOVIE_JSON_DATA(state, results) {
@@ -32,12 +29,20 @@ export default new Vuex.Store({
     GET_RANDOM_MOVIE_DATA(state, result) {
       state.randomMovie = result
     },
-    CREATE_TODO(state,todoItem){
-      state.todos.push(todoItem)
+    CREATE_MOVIE(state,movieItem){
+      state.movies.push(movieItem)
     },
-    DELETE_TODO (state, todoItem) {
-      const index = state.todos.indexOf(todoItem)
-      state.todos.splice(index, 1)
+    DELETE_MOVIE (state, movieItem) {
+      const index = state.movies.indexOf(movieItem)
+      state.movies.splice(index, 1)
+    },
+    UPDATE_MOVIE_STATUS (state, movieItem) {
+      state.movies = state.movies.map( (movie) => {
+        if (movie === movieItem) {
+          movie.isCompleted = !movie.isCompleted
+        }
+        return movie
+      })
     },
   },
   actions: {
@@ -71,16 +76,19 @@ export default new Vuex.Store({
         context.dispatch('getRandomJson')
       })
     },
-    createTodo(context, todoTitle){
-      const todoItem = {
-        title: todoTitle,
+    createMovie(context, movieTitle){
+      const movieItem = {
+        title: movieTitle,
         isCompleted: false,
       }
-      context.commit('CREATE_TODO',todoItem)
+      context.commit('CREATE_MOVIE',movieItem)
     },
-    deleteTodo(context, todoItem){
-      context.commit('DELETE_TODO', todoItem)
-    }
+    deleteMovie(context, movieItem){
+      context.commit('DELETE_MOVIE', movieItem)
+    },
+    updateMovieStatus (context, movieItem) {
+      context.commit('UPDATE_MOVIE_STATUS', movieItem)
+    },
   },
   modules: {
   }

@@ -1,8 +1,8 @@
 <template>
     <div>
         <input type="text"
-        v-model.trim="todoTitle"
-        @keyup.enter="createTodo">
+        v-model.trim="movieTitle"
+        @keyup.enter="createMovie">
     </div>
   </template>
   
@@ -11,14 +11,14 @@
     name: 'WatchListForm',
     data(){
         return {
-            todoTitle:null,
+            movieTitle:null,
         }
     },
     methods:{
-        createTodo(){
+        createMovie(){
             
-            this.$store.dispatch('createTodo', this.todoTitle)
-            this.todoTitle= null
+            this.$store.dispatch('createMovie', this.movieTitle)
+            this.movieTitle= null
         }
     }
   }

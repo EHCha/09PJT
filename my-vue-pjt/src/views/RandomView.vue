@@ -3,7 +3,7 @@
     <button @click="randomJson">PICK</button>
     <br>
     <div v-if="movie">
-      <img :src="randomQ">
+      <img :src="randomQ" style="width:300px;">
       <p>{{movie.title}}</p>
     </div>
       
@@ -33,5 +33,5 @@ export default {
 </script>
 
 <style>
-
+  
 </style>
