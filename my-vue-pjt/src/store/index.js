@@ -10,8 +10,8 @@ export default new Vuex.Store({
   },
   getters: {
     movieList(state){
-      return state.movieList.length
-    }
+      return state.movieList
+    },
   },
   mutations: {
     GET_MOVIE_LIST(state, movie){

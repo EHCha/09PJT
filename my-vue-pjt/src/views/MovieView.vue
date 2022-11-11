@@ -1,12 +1,19 @@
 <template>
   <div>
-
+    <MovieCard/>
   </div>
 </template>
 
 <script>
+import MovieCard from '@/components/MovieCard.vue';
+
+
 export default {
-  name:'MovieView'
+  name:'MovieView',
+  components: {
+    MovieCard,
+  }
+
 }
 </script>
 
