@@ -10,7 +10,7 @@ export default new Vuex.Store({
   },
   getters: {
     movieSrc(state){
-      return state.movieList.results[0].poster_path
+      return state.movieList.results[1].poster_path
     },
     movieList(state){
       return state.movieList

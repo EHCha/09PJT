@@ -4,7 +4,7 @@
     <h1>rr</h1>
     
     <hr>
-    <img :src="imgSrc" alt="Movie">
+    <img :src="imgSrc2" alt="Movie">
 
   </div>
 </template>
@@ -15,7 +15,8 @@ export default {
     methods:{
       getMovieList(){
         this.$store.dispatch('getMovieList')
-      }
+      },
+      
     },
     computed:{
       movieList(){
@@ -25,14 +26,14 @@ export default {
       imgSrc(){
         return this.$store.getters.movieSrc
       },
-      imgSrc(){
-        return `https://image.tmdb.org/t/p/original${imgSrc}`
+      imgSrc2(){
+        return `https://image.tmdb.org/t/p/original${this.imgSrc}`
 
       }
     },
     beforeMount() {
         this.$store.dispatch('getMovieList')
-    }
+    },
 }
 </script>
 
