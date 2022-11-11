@@ -10,6 +10,12 @@ export default new Vuex.Store({
   state: {
     MovieJsonData: null,
     randomMovie: null,
+    todos:[
+      {
+        title:'title1',
+        
+      }
+    ],
   },
   getters: {
     getMovieJsonData(state) {
@@ -25,7 +31,14 @@ export default new Vuex.Store({
     },
     GET_RANDOM_MOVIE_DATA(state, result) {
       state.randomMovie = result
-    }
+    },
+    CREATE_TODO(state,todoItem){
+      state.todos.push(todoItem)
+    },
+    DELETE_TODO (state, todoItem) {
+      const index = state.todos.indexOf(todoItem)
+      state.todos.splice(index, 1)
+    },
   },
   actions: {
     getMovieJson(context) {
@@ -51,11 +64,22 @@ export default new Vuex.Store({
       axios.get(url, { params })
       .then((response) => {
         context.commit('GET_RANDOM_MOVIE_DATA', response.data)
+        
       })
       .catch((error) => {
         error
         context.dispatch('getRandomJson')
       })
+    },
+    createTodo(context, todoTitle){
+      const todoItem = {
+        title: todoTitle,
+        isCompleted: false,
+      }
+      context.commit('CREATE_TODO',todoItem)
+    },
+    deleteTodo(context, todoItem){
+      context.commit('DELETE_TODO', todoItem)
     }
   },
   modules: {
