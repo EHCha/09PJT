@@ -1,12 +1,16 @@
 <template>
   <div>
-    <h1>보고싶은 영화</h1>
-    
-    <WatchListForm/>
+    <div class="container" style="width:75%" >
+
+      <h1>보고싶은 영화</h1>
+      <WatchListForm/>
+    </div>
+
     <WatchListItem
           v-for="(movie,index) in movies"
           :key="index"
           :movie="movie"
+          class="video-list-item"
         />
   </div>
 </template>
@@ -31,5 +35,9 @@ export default {
 </script>
 
 <style>
-
+.video-list-item:hover{
+  cursor: pointer;
+  background-color: #eee;
+  /* width: 60%; */
+}
 </style>

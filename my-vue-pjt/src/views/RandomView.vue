@@ -1,13 +1,10 @@
 <template>
   <div>
-    <button @click="randomJson">PICK</button>
-    <br>
+    <button @click="randomJson" class="btn btn-success" style="width:300px;">PICK</button>
     <div v-if="movie">
       <img :src="randomQ" style="width:300px;">
-      <p>{{movie.title}}</p>
+      <h2>{{movie.title}}</h2>
     </div>
-      
-    <hr>
   </div>
 </template>
 

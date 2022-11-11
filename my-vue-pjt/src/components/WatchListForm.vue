@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="background:">
         <input type="text"
         v-model.trim="movieTitle"
         @keyup.enter="createMovie">
