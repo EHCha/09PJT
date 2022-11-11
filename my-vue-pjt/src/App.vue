@@ -3,7 +3,7 @@
     <nav>
       <router-link :to="{name: 'movie'}">Movie</router-link> |
       <router-link :to="{name: 'random'}">Random</router-link> |
-      <router-link :to="{name: 'watchlist'}">WatchList</router-link>
+      <router-link :to="{name: 'WatchList'}">WatchList</router-link>
     </nav>
     <router-view/>
   </div>

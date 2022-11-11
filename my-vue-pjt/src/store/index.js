@@ -1,41 +1,60 @@
-import axios from 'axios'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
+import _ from 'lodash'
+const API_KEY = '54f36fb75007c2e17a09cf9651dcdae2'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    movieList: [],
+    MovieJsonData: null,
+    randomMovie: null,
   },
   getters: {
-    movieSrc(state){
-      return state.movieList.results[1].poster_path
+    getMovieJsonData(state) {
+      return state.MovieJsonData
     },
-    movieList(state){
-      return state.movieList
-    },
-
+    getRandomMovieData(state) {
+      return state.randomMovie
+    }
   },
   mutations: {
-    GET_MOVIE_LIST(state, movie){
-      state.movieList = movie
+    GET_MOVIE_JSON_DATA(state, results) {
+      state.MovieJsonData = results
+    },
+    GET_RANDOM_MOVIE_DATA(state, result) {
+      state.randomMovie = result
     }
   },
   actions: {
-    getMovieList(context){
-      const API_URL = 'https://api.themoviedb.org/3/movie/popular?api_key='
-      const API_KEY = '54f36fb75007c2e17a09cf9651dcdae2'
-      axios({
-        method:'get',
-        url: API_URL + API_KEY
-      })
-      .then(response=>{
-        context.commit('GET_MOVIE_LIST', response.data)
+    getMovieJson(context) {
+      const url = 'https://api.themoviedb.org/3/movie/popular'
+      const params= {
+        api_key: API_KEY,
+        language: 'ko-KR',
+        region: 'KR',
+        adult: 'true',
+      }
+      axios.get(url, { params })
+      .then((response) => {
         console.log(response.data)
+        context.commit('GET_MOVIE_JSON_DATA', response.data.results)
       })
-      .catch(error =>{
-        console.log(error)
+    },
+    getRandomJson(context) {
+      const url = 'https://api.themoviedb.org/3/movie/' + _.random(1, 300000)
+      const params= {
+        api_key: API_KEY,
+        language: 'ko-KR',
+      }
+      axios.get(url, { params })
+      .then((response) => {
+        context.commit('GET_RANDOM_MOVIE_DATA', response.data)
+      })
+      .catch((error) => {
+        error
+        context.dispatch('getRandomJson')
       })
     }
   },
