@@ -19,6 +19,7 @@ export default {
     },
     computed:{
       movieList(){
+
         return this.$store.state.movieList
       },
       imgSrc(){
@@ -26,6 +27,7 @@ export default {
       },
       imgSrc(){
         return `https://image.tmdb.org/t/p/original${imgSrc}`
+
       }
     },
     beforeMount() {
