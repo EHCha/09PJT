@@ -1,12 +1,18 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/movies">Movie</router-link> |
+      <router-link to="/Random">Random</router-link> |
+      <router-link to="/">WatchList</router-link>
     </nav>
     <router-view/>
   </div>
 </template>
+
+<script>
+// API_KEY = 54f36fb75007c2e17a09cf9651dcdae2
+// API_URL = https://api.themoviedb.org/3/movie/popular?api_key=
+</script>
 
 <style>
 #app {
