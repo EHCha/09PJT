@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <button @click="getMovie">영화</button>
-    <img :src="imgSrc" alt="">
-    
+<div>
+  <div v-if="movie">
+    <img :src="imgSrc" style="width: 300px">
+    <p>{{ movie.title }}</p>
+    </div>    
   </div>
 </template>
 
@@ -10,21 +11,25 @@
 export default {
     name: 'MovieCard',
     props:{
-        movieList: Array,
+        movie: Object
     },
-    // data() {
-    //     return {
-    //         imgUrl: this.$store.movieList,
-    //     }
-    // },
     computed: {
+        // getMovie() {
+        //     return this.$store.getters.getMovieJsonData
+        // },
         imgSrc() {
-           return this.$store.getters.movieList
+            return 'https://image.tmdb.org/t/p/original/'+this.movie.poster_path
         },
-        getMovie() {
-            return this.$store.dispatch('getMovieList')
+        
+    },
+
+    methods: {
+        MovieJson() {
+            this.$store.dispatch('getMovieJson')
+            // console.log(this.getMovie)
         }
     },
+    
 }
 </script>
 
