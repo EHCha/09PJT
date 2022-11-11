@@ -1,8 +1,11 @@
 <template>
-<div>
-  <div v-if="movie">
+<div class="card justify-content-center">
+  <div v-if="movie" class="cards arrange2">
+    <br>
     <img :src="imgSrc" style="width: 300px">
-    <p>{{ movie.title }}</p>
+    <p></p>
+    <p class="fonts">{{ movie.title }}</p>
+    <p class="str fonts arrange">{{ movie.overview }}</p>
     </div>    
   </div>
 </template>
@@ -34,5 +37,24 @@ export default {
 </script>
 
 <style>
+.str{text-overflow: ellipsis;
 
+white-space: nowrap;
+
+overflow: hidden}
+
+.cards {
+  width: 600px;
+}
+
+.fonts {
+    font-weight: bold;
+}
+
+.arrange {
+    padding-left: 40px;
+}
+.arrange2 {
+    padding-left: 100px;
+}
 </style>

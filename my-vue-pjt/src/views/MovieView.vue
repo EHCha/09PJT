@@ -1,12 +1,12 @@
 <template>
-  <div>
-    <div
-    v-for="(movie, index) in totalMovie"
-    :key="index">
+  <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+  
+      <div
+      v-for="(movie, index) in totalMovie"
+      :key="index">
+      <MovieCard :movie="movie"/>
 
-    <MovieCard :movie="movie"/>
-    
-    </div>
+      </div>
   </div>
 </template>
 
@@ -35,5 +35,7 @@ export default {
 </script>
 
 <style>
+
+
 
 </style>

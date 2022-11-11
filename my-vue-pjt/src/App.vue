@@ -1,11 +1,18 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link :to="{name: 'movie'}">Movie</router-link> |
-      <router-link :to="{name: 'random'}">Random</router-link> |
-      <router-link :to="{name: 'WatchList'}">WatchList</router-link>
+     <h1>Best Film</h1>
+    <nav class="navbar justify-content-end navbar-expand-lg bg-dark">
+      
+      <div style="padding-right: 10px;">
+      <router-link :to="{name: 'movie'}"> Movie | </router-link>
+      <router-link :to="{name: 'random'}"> Random | </router-link>
+      <router-link :to="{name: 'WatchList'}"> WatchList </router-link> 
+      </div>
     </nav>
     <router-view/>
+    
+    
+    
   </div>
 </template>
 
@@ -26,14 +33,16 @@
 
 nav {
   padding: 30px;
+  height: 40px;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #eee;
 }
 
 nav a.router-link-exact-active {
   color: #42b983;
 }
+
 </style>
