@@ -9,8 +9,8 @@ export default new Vuex.Store({
     movieList: [],
   },
   getters: {
-    movieList(state){
-      return state.movieList.length
+    movieSrc(state){
+      return state.movieList.results[0].poster_path
     }
   },
   mutations: {
@@ -20,7 +20,6 @@ export default new Vuex.Store({
   },
   actions: {
     getMovieList(context){
-      console.log('a')
       const API_URL = 'https://api.themoviedb.org/3/movie/popular?api_key='
       const API_KEY = '54f36fb75007c2e17a09cf9651dcdae2'
       axios({
